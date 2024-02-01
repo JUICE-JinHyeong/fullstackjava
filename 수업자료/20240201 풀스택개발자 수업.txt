@@ -1,0 +1,468 @@
+문자열 클래스 비교시 
+변수.equals(비교할 변수)
+
+replace(a,b)
+문자열 변환
+substring()문자열 자르기
+
+문자열 찾기
+indexOf()
+
+문자열 분리
+변수.split()
+
+
+배열
+1. 색인 배열 
+	-연속된 메모리
+2. 연관 배열 
+	-사전(키:값), Map
+
+	int [] a = {1,2,3,4,5};
+	int [] a2 = new int[10]; 값이 10칸 만들어지고 0으로 초기화
+	int [][] a3 = { {1,2,3} , {4,5,6}}
+	
+	a3[0][0] == 1 
+
+
+int [] a1 = new int [] {1,2,3}
+초기화 및 대입 -> 함수 호출시에는 사용 불가
+a1 = new int[] {1,2,3}
+대입
+
+
+
+---클래스----
+
+
+클래스는 일종의 변수 타입이다.
+사용자가 정의하는 새로운 데이터 타입
+
+Data + 함수(메소드,기능,메시지,약속,프로토콜 등)
+
+함수
+	논리적 분류
+	초기화 - 생성자(python->__init__)
+	일반 함수 
+	getter/setter
+
+주어진 코드 Person p = new Person();은 Java에서 객체를 생성하는 코드입니다. 코드를 간단히 설명하면 다음과 같습니다:
+
+Person: 클래스 이름입니다. 코드에서 Person 클래스를 사용하고 있습니다.
+p: 객체를 참조하기 위한 변수입니다. 이 변수의 타입은 Person 클래스입니다.
+new Person(): Person 클래스의 새로운 객체를 생성합니다. new 키워드를 사용하여 객체를 할당하고, Person()는 해당 클래스의 생성자를 호출합니다.
+따라서, Person p = new Person();은 Person 클래스의 새로운 객체를 생성하고, 그 객체를 참조하는 변수 p를 선언한 것입니다. 이렇게 생성된 객체는 p라는 변수를 통해 접근하고 사용할 수 있습니다.
+
+그러나 이 코드에서는 생성된 객체를 어떠한 동작이나 초기화 없이 단순히 변수 p에 할당하고 있으므로, 객체에 특별한 동작이나 데이터 초기화가 없습니다. 실제로 유용한 작업을 위해서는 클래스에 필요한 초기화 메서드 또는 생성자를 정의하고 호출해야 할 것입니다.
+
+
+* 전역변수 선언시 클래스 내부에서 선언되어야한다.
+
+예시
+
+public class Person {
+    // 전역 변수 선언
+    private static int count = 0;
+
+    // 클래스의 다른 부분에서 사용되는 메서드 등...
+
+    // 생성자에서 전역 변수 조작 예시
+    public Person() {
+        // 객체가 생성될 때마다 count를 증가시킴
+        count++;
+    }
+
+    // 전역 변수를 사용하는 메서드
+    public static void printCount() {
+        System.out.println("총 생성된 객체 수: " + count);
+    }
+
+    public static void main(String[] args) {
+        // 객체 생성
+        Person person1 = new Person();
+        Person person2 = new Person();
+
+        // 전역 변수 사용
+        printCount(); // 출력: 총 생성된 객체 수: 2
+    }
+}
+
+
+
+
+Java에서 Getter와 Setter는 클래스의 멤버 변수(필드)에 접근하고 값을 얻거나 설정하는 메서드를 말합니다. 이러한 메서드는 데이터 캡슐화를 지원하며, 객체의 상태를 외부에서 안전하게 읽고 쓸 수 있도록 도와줍니다.
+
+Getter (접근자 메서드):
+
+Getter는 객체의 특정 필드의 값을 반환하는 메서드입니다.
+일반적으로 get 접두사를 사용하며, 필드의 값을 반환하는 메서드를 의미합니다.
+java
+Copy code
+public class Person {
+    private String name;
+
+    // Getter 메서드
+    public String getName() {
+        return name;
+    }
+}
+위의 예제에서 getName 메서드는 Person 클래스의 name 필드의 값을 반환합니다.
+
+Setter (설정자 메서드):
+
+Setter는 객체의 특정 필드에 값을 설정하는 메서드입니다.
+일반적으로 set 접두사를 사용하며, 필드에 값을 설정하는 메서드를 의미합니다.
+java
+Copy code
+public class Person {
+    private String name;
+
+    // Setter 메서드
+    public void setName(String newName) {
+        this.name = newName;
+    }
+}
+위의 예제에서 setName 메서드는 Person 클래스의 name 필드에 값을 설정합니다.
+
+이렇게 Getter와 Setter를 사용하면 외부에서 객체의 내부 상태에 안전하게 접근할 수 있습니다. 일반적으로 클래스의 필드는 private으로 선언되고, Getter와 Setter를 통해 필드에 접근하도록 하는 것이 좋은 프로그래밍 관행입니다.
+
+
+
+
+
+
+class Person{
+
+}
+
+객체지향프로그램의 특징 : 논리적인 오류를 발생하지 않게하려고
+1. 은닉성 - 데이터를 보이지않게 숨기고 메소드(함수)를 필요에 따라 공개한다.
+private, public
+2. 상속성 - 코드의 재사용성을 높인다
+3. 다형성 - 하나의 함수 호출로 다양한 결과 도출(상속에 의해서 구현)
+
+객체지향 프로그래밍(Object-Oriented Programming, OOP)은 소프트웨어 개발 패러다임 중 하나로, 현실 세계의 객체(Object) 개념을 프로그래밍에 도입하여 소프트웨어를 모델링하고 설계하는 방법입니다. 객체지향 프로그래밍의 주요 특징은 다음과 같습니다:
+
+객체 (Object): 현실 세계의 실체에 해당하는 개념으로, 데이터와 그 데이터를 처리하는 메서드(함수)를 함께 포함합니다. 예를 들어, 자동차, 사람, 주문 등이 객체가 될 수 있습니다.
+
+클래스 (Class): 객체의 설계도 또는 틀로, 동일한 특성과 행위를 가지는 객체들을 생성하기 위한 템플릿입니다. 클래스는 객체를 생성하기 위한 데이터와 메서드의 집합을 정의합니다.
+
+상속 (Inheritance): 기존 클래스에서 정의된 속성과 메서드를 다른 클래스가 그대로 상속받아 사용할 수 있도록 하는 개념입니다. 이를 통해 코드의 재사용성이 높아지고, 계층 구조를 통해 프로그램을 더 쉽게 이해할 수 있습니다.
+
+다형성 (Polymorphism): 같은 이름의 메서드나 연산자가 다양한 상황에서 다르게 동작하는 특성입니다. 메서드 오버로딩(한 클래스 내에서 동일한 이름의 메서드가 다양한 매개변수를 가지는 것)과 메서드 오버라이딩(하위 클래스에서 상위 클래스의 메서드를 재정의하는 것)을 통해 구현됩니다.
+
+캡슐화 (Encapsulation): 데이터와 그 데이터를 처리하는 메서드를 하나의 단위로 묶는 것을 의미합니다. 캡슐화는 외부에서 객체의 내부 구현을 감추고 객체와 상호작용하기 위한 인터페이스를 제공함으로써 시스템의 유지보수성과 안정성을 향상시킵니다.
+
+객체지향 프로그래밍은 이러한 특징들을 통해 코드의 가독성, 재사용성, 유지보수성 등을 개선하고 프로그램의 구조를 더 모듈화된 형태로 만들어줍니다.
+
+
+
+
+전역변수 선언시 static으로 선언한다.
+
+하나의 파일 안에 다수의 class를 만들 수 있다.
+
+파일 내부에 class A , class B , class C가 있을 때
+public이 없을 경우 A.이름 , B.이름 다양
+
+public C가 있을 경우
+반드시 C.이름 으로 나와야한다.
+
+
+- 클래스 객체 생성
+클래스 변수 = new 클래스();
+
+필드 
+	타입 필드명 = 초기값 ;
+생성자
+	클래스(매개변수, ...) {}
+메소드
+
+
+오버로딩
+
+생성자의 이름은 같으나 내부 변수가 다르다
+
+car(string model)
+
+멤버변수를 지칭할떄 this를 사용한다.
+
+
+
+메소드 선언
+(함수 정의)
+
+void -> return 타입이 없다
+
+class 선언시 통괄적인 명사로 선언
+
+package 상위패키지, 하위패키지
+보통 도메인명 역순
+
+
+
+패키지 가져오기
+
+import com.hankook.Tire;
+import com.hankook.*;
+import com.*;
+
+Tire t1 = new Tire() ;
+
+private
+거의 필드에서 사용
+
+protected
+
+(없음)디폴트
+
+public
+거의 메소드에서 사용
+
+
+package com.example;
+
+public 클래스는 타 패키지에서 사용할 수 있다
+public class Example {
+    // 클래스 내용
+}
+
+package com.anotherpackage;
+
+import com.example.Example;
+
+public class AnotherClass {
+    public static void main(String[] args) {
+        // com.example 패키지의 Example 클래스에 접근
+        Example example = new Example();
+        // 클래스 내용 사용
+    }
+}
+
+
+
+
+
+
+
+
+
+***singleton****
+ch06 sec15
+
+
+Setter
+데이터를 검증해서 유효한 값만 필드에 저장
+Getter
+필드값이 객체 외부에서 사용하기에 부적절할 경우, 적절한 값으로 변환해서 리천할 수 있는 메소드
+
+getter와 setter 사용시
+getFied setFied
+대문자 넣어주기
+
+
+***상속***
+java 부모는 한 개만 가능
+
+메소드 오버라이팅
+부모가 public인데 자식이 private는 불가
+
+생성자에서 부모 호출시 super()
+일반 메소드에서 부모 호출시 super.method()
+
+final 클래스는 부모 클래스가 될 수 없어 자식 클래스를 만들 수 없다.
+
+**`instanceof`** 연산자는 객체가 특정 클래스나 인터페이스의 인스턴스인지를 확인하기 위해 사용하는 연산자입니다. 이 연산자는 **`boolean`** 값을 반환하며, 해당 객체가 지정한 클래스 또는 인터페이스의 인스턴스일 경우 **`true`**를 반환하고, 그렇지 않으면 **`false`**를 반환합니다.
+
+**`instanceof`**의 기본 구문은 다음과 같습니다:
+
+```java
+javaCopy code
+obj instanceof ClassName
+
+```
+
+- **`obj`**: 확인하고자 하는 객체입니다.
+- **`ClassName`**: 객체가 해당 클래스의 인스턴스인지 확인하려는 클래스 이름입니다.
+
+또한, **`instanceof`**를 사용할 때 **`if`** 문과 함께 사용하여 조건적으로 코드를 실행할 수 있습니다. 예를 들어:
+
+```java
+javaCopy code
+if (obj instanceof ClassName) {
+    // obj가 ClassName의 인스턴스인 경우 이 블록이 실행됩니다.
+} else {
+    // obj가 ClassName의 인스턴스가 아닌 경우 이 블록이 실행됩니다.
+}
+
+```
+
+**`instanceof`** 연산자를 사용하면 다형성(polymorphism)과 함께 객체의 타입을 확인하고, 해당 타입에 맞게 처리할 수 있습니다. 이것은 클래스 상속, 인터페이스 구현, 다른 객체와의 관계 등을 다룰 때 매우 유용합니다.
+
+#추가
+
+위에서 instanceof 연산자를 사용하면 다형성과 함께 라고 했는데, 그게 무슨 말인지 쉽게 설명해줘
+
+⇒
+
+다형성(Polymorphism)은 객체 지향 프로그래밍(OOP)의 중요한 개념 중 하나입니다. 이 개념은 다음과 같이 설명할 수 있습니다.
+
+다형성은 "하나의 인터페이스로 여러 개의 다른 클래스를 처리할 수 있는 능력"을 의미합니다. 다시 말해, 다형성은 서로 다른 클래스의 객체를 동일한 방식으로 다룰 수 있게 해주는 것입니다.
+
+여기서 **`instanceof`** 연산자와의 관련성은 다음과 같습니다:
+
+1. 다형성을 활용할 때, 부모 클래스나 인터페이스 타입의 참조 변수를 사용하여 서로 다른 하위 클래스의 객체를 참조할 수 있습니다. 이것을 "업캐스팅(upcasting)"이라고 합니다. 예를 들어:
+
+```java
+javaCopy code
+Animal animal = new Dog(); // Animal은 부모 클래스, Dog는 하위 클래스
+
+```
+
+1. 이제 **`animal`** 변수를 통해 **`Animal`** 클래스의 메소드에 접근할 수 있습니다. 그런데 만약 **`animal`**이 실제로 **`Dog`** 클래스의 객체를 참조하고 있다면 **`Dog`** 클래스의 메소드도 호출할 수 있습니다.
+2. 여기서 **`instanceof`** 연산자는 변수가 어떤 클래스의 객체를 참조하고 있는지를 확인할 때 사용됩니다. 예를 들어:
+
+```java
+javaCopy code
+if (animal instanceof Dog) {
+    // animal 변수가 Dog 클래스의 객체를 참조하고 있다면 이 블록이 실행됩니다.
+}
+
+```
+
+이것은 다형성을 활용하여 어떤 종류의 동물을 다루고 있는지 확인할 때 유용합니다. 즉, **`Dog`**인지, **`Cat`**인지 등을 구분할 수 있습니다.
+
+요약하면, 다형성은 하나의 인터페이스나 부모 클래스를 사용하여 다양한 하위 클래스를 처리하는 능력을 제공하며, **`instanceof`** 연산자는 다형성을 사용할 때 객체의 실제 타입을 확인하는 데 도움을 줍니다.
+
+
+
+객체지향언어에서의 일바화와 특별화
+
+일반화 - 부모클래스 , 추상클래스(동물 - 동물의 종류는 매우많다 특정 지을 수 없다)
+추상 클래스 abstract 키워드를 붙임
+특별화 - 자식클래스
+
+
+
+상속은 많아질수록 코드가 무거워진다
+-> 대체수단 인터페이스
+
+추상메소드 - 부모의 참조 변수를 가지고 자식 함수를 호출하는 기능
+
+자식 클래스들이 가지고있는 공통 메소드를 뽑아내어 추상 클래스로 작성
+메소드 선언부만 동일하고 실행내용은 자식 클래스마다 달라야하는 경우 추상메소드를 선언 가능
+
+일반 메소드 선언과는 차이가 있다
+abstract 키워드가붙고 중괄호가 없다.
+
+
+sealed 클래스
+
+permits 로 상속 가능한 자식 클래스를 지정
+public sealed class Person permits Employee, Manager()
+
+
+SOLID는 객체지향 프로그래밍에서 소프트웨어 디자인 원칙의 다섯 가지 기본 원칙을 나타냅니다. 이 원칙들은 소프트웨어의 유지보수성, 확장성, 재사용성, 이해성과 같은 품질을 향상시키기 위한 지침으로 사용됩니다. SOLID는 다음 다섯 가지 원칙으로 구성되어 있습니다:
+
+단일 책임 원칙 (Single Responsibility Principle - SRP):
+한 클래스는 하나의 책임만 가져야 합니다. 즉, 클래스는 변경의 이유가 하나여야 합니다. 이를 통해 클래스를 변경할 때 예상치 못한 문제가 발생할 가능성을 낮출 수 있습니다.
+
+개방/폐쇄 원칙 (Open/Closed Principle - OCP):
+소프트웨어의 요소(클래스, 모듈, 함수 등)는 확장에는 열려 있어야 하고, 변경에는 닫혀 있어야 합니다. 새로운 기능이 추가될 때 기존 코드를 수정하지 않고, 확장만으로 새로운 기능을 추가할 수 있도록 합니다.
+
+리스코프 치환 원칙 (Liskov Substitution Principle - LSP):
+자식 클래스는 언제나 부모 클래스를 대체할 수 있어야 합니다. 즉, 상속 관계에서는 하위 클래스는 상위 클래스의 기능을 수행할 수 있어야 하며, 클라이언트 코드는 이를 알지 못하고도 정상적으로 동작해야 합니다.
+
+인터페이스 분리 원칙 (Interface Segregation Principle - ISP):
+클라이언트는 자신이 사용하지 않는 인터페이스에 의존하지 않아야 합니다. 즉, 여러 개의 구체적인 인터페이스보다는 하나의 범용적인 인터페이스보다는 여러 개의 구체적인 인터페이스가 낫다는 원칙입니다.
+
+의존 역전 원칙 (Dependency Inversion Principle - DIP):
+고수준 모듈은 저수준 모듈에 의존해서는 안되며, 양쪽 모두 추상화에 의존해야 합니다. 즉, 추상화에 의존하도록 설계해야 합니다.
+
+
+
+
+클래스 와 추상클래스
+
+클래스 
+ - 객체 사용
+ - 참조변수 사용
+ - 멤버변수 가질 수 있음
+ - 멤버함수를 가질 수 있음
+ - 정적변수 가질 수 있음
+
+추상클래스
+ - 참조변수만 사용
+ - 객체 사용불가 (상속을 하고 추상메소드에서 재정의된 객체를 사용해야한다)
+ - 멤버변수 가질 수 있음 
+ - 멤버함수를 가질 수 있음
+ - 정적변수 가질 수 있음
+
+인터페이스
+추상메소드만 가지고있다.
+
+ - 멤버변수 가질 수 없음
+ - 멤버함수 가질 수 있음
+ - 다중 상속 가능
+
+추상메소드
+ - 정적변수
+ - 정적 함수
+ - 기본 함수 or 멤버 함수 (기본 함수에서는 this를 사용할 수 없다)
+
+
+public class Example {
+    // public 변수
+    public static final int PUBLIC_CONSTANT = 10;
+
+    // default (package-private) 변수
+    static final String DEFAULT_CONSTANT = "Default";
+
+    // private 변수 (클래스 내부에서만 접근 가능)
+    private static final double PRIVATE_CONSTANT = 3.14;
+
+    // public 메서드
+    public static void publicMethod() {
+        System.out.println("Public Method");
+    }
+
+    // default 메서드 (package-private)
+    static void defaultMethod() {
+        System.out.println("Default Method");
+    }
+
+    // private 메서드 (클래스 내부에서만 접근 가능)
+    private static void privateMethod() {
+        System.out.println("Private Method");
+    }
+
+    // static 메서드 (인스턴스 생성 없이 호출 가능)
+    public static void staticMethod() {
+        System.out.println("Static Method");
+    }
+
+    // final 메서드 (하위 클래스에서 오버라이드 할 수 없음)
+    public final void finalMethod() {
+        System.out.println("Final Method");
+    }
+}
+
+참조변수는 부모로 변수 생성은 자식으로
+
+챕터 9 문제 6 예시 1
+
+**중첩클래스**
+
+클래스 안 클래스
+클래스 안 인터페이스
+
+##나의 오늘 하루 일과를 클래스로 작성해보기
+
+
+
+
+
+
+
+
+
